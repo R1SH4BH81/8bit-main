@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>8BIT - CPP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script>
+      window.addEventListener('load', function () {
+            var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (screenWidth < 960 || isMobileDevice) {
+                window.location.href = 'restricted.html';
+            }
+        });
+
+    </script>
+
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 500px;
+            width: 750px;
+            border-radius: 25px;
+
+
+            background-color: rgba(255, 255, 255, 0.529);
+            border-radius: 0.75rem;
+            /* Equivalent to 12px */
+            border: 0.0625rem solid rgba(0, 0, 0, 0.8);
+            height: 29.125rem;
+            /* Equivalent to 450px */
+
+            margin-top: 1.125rem;
+            /* Equivalent to 18px */
+            width: 40.625rem;
+            /* Equivalent to 650px */
+            margin-right: 1.25rem;
+            /* Equivalent to 20px */
+            flex: 1;
+
+        }
+         @media (max-width: 1024px){
+      #editor{
+        width: 30rem;
+        height: 480px;
+      }
+      .custom-textarea{
+    height: 480px;
+    width: 30rem;
+   
+  }
+  
+  
+    }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="desktop-1 screen">
+        <div class="flex-col flex">
+
+
+            <div class="overlap-group">
+                <a href="index.html">
+                    <div class="rectangle-14" title="Python">
+                        <img src="py.png" width="50px" height="50px" title="Python">
+                </a>
+            </div>
+            <!--<a href="js.html">
+                <div class="rectangle-14"
+                    onclick="changePlaceholder(document.getElementById('codeTextarea'), 'javascript')">
+                    <img src="javas.png" width="75px" height="40px">
+            </a>
+        </div>-->
+            <a href="java.html">
+                <div class="rectangle-1" title="Java">
+                    <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/181_Java-512.png"
+                        width="50px" height="50px" title="Java">
+            </a>
+        </div>
+
+        <a href="cpp.html">
+            <div class="rectangle-1 hot-glow" title="C++">
+                <img src="cpp.png" width="50px" height="50px" title="C++">
+        </a>
+    </div>
+
+    <a href="c.html">
+        <div class="rectangle-1" title="C">
+            <img src="https://wallpapercave.com/wp/wp4521293.png" width="50px" height="50px" title="C">
+
+    </a></div>
+    </div>
+    </div>
+    <div class="flex-col-1">
+        <div class="flex-row flex">
+            <div class="rectangle-1-1"title="Info"  onclick="showMessageBox()" title="Info"
+                    style="background-color: rgba(255, 255, 255, 0.092);"><i class="fas fa-info-circle"
+                        ></i>
+            </div>
+            <div class="rectangle-1-1" title="Ask Chat Gpt" onclick="openChatWindow()" 
+                    style="background-color: rgba(255, 255, 255, 0.092);"><i class="fas fa-comment"
+                         title="Ask Chat Gpt"></i>
+            </div>
+
+
+            <div class="rectangle-1-1" title="Login " onclick="openLoginWindow()" title="Login"
+                    style="background-color: rgba(255, 255, 255, 0.092);"><i class="fas fa-user" title="Login "
+                        ></i></div>
+
+            <div class="rectangle-1-1"  onclick="leader()"  title="LeaderBoard"
+                    style="background-color: rgba(255, 255, 255, 0.092);"><i class="fas fa-trophy"
+                        ></i></div>
+            <div class="overlay" id="overlay" style="display: none;">
+               <div class="message-box">
+          <h2>Info</h2>
+          <p>Keyboard Shortcuts<br>
+
+            <br>"Copy" --><b>  F8</b>     quickly copy the code from the editor.
+            <br>"Save" --><b>  F9</b>     save your code in the local machine.
+
+            <br>"Clear All" --><b>  F12</b>  clear the code editor, removing all
+            the code.
+            <br> "Run" --> <b>  F5</b>  will execute the code.
+            <br> "Console" --> show console logs and double tap on console window or button to close it
+          </p>
+        <p>Connect to the creators : <a href="https://www.linkedin.com/in/r1shabh81/"
+                            style="text-decoration: none;"><b></b><img
+                                src="c1.png" class="enlarge-image" 
+                                style="height: 45px;width: 45px;border-radius: 50%;" alt="Rishabh Mishra">Rishabh
+                            Mishra</b></a> & <a href="https://www.linkedin.com/in/vaibhav-srivastava-63684477"
+                            style="text-decoration: none;"><b></b><img
+                                src="c2.png" class="enlarge-image" 
+                                style="height: 45px;width: 45px;border-radius: 50%;" alt="Vaibhav Srivastava">Vaibhav
+                            Srivastava</b></a> </p>
+          <a class="close-btn" onclick="hideMessageBox()">Close</a>
+        </div>
+            </div>
+        </div>
+        <div class="flex-row-1">
+             <div class="rectangle" onclick="copyCode()" title="Copy/F8">
+        <span class="icon">
+          <i class="fas fa-copy" title="Copy/F8"></i>
+        </span>
+        <span class="hover-text">Copy</span>
+      </div>
+      
+      <div class="rectangle" id="console-viewer-toggle" onclick="showConsoleMessagesAndFloat();" title="Show Console">
+        <span class="icon">
+          <i class="fas fa-terminal" title="Console"></i>
+        </span>
+        <div class="console-viewer" id="console-viewer">
+          <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Console<h2>
+          <div id="console-output"></div>
+        </div>
+        <span class="hover-text">Console</span>
+      </div>
+      
+
+      <div class="rectangle" onclick="saveCode()" title="Save/F9">
+        <span class="icon">
+          <i class="fas fa-save" title="Save/F9"></i>
+        </span>
+        <span class="hover-text">Save</span>
+      </div>
+                 <div class="rectangle-i" onclick="clearCode()" title="Clear Code/F12"><img src="https://icon-library.com/images/delete-icon-png/delete-icon-png-19.jpg" style="height: 25px; width: 25px;" title="Clear Code/F12"></div>
+        </div>
+        <div class="textarea-container">
+
+
+            <div id="editor">#include &lt;iostream&gt;
+
+int main() {
+     // Print "Hello, World!" to the console
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}</div><textarea class="custom-textarea"></textarea><textarea
+                            class="textbox rectangle-3" id="outputTextarea"
+                            style="margin-top:28px;height: 450px;resize:horizontal;overflow: auto;"
+                            placeholder="8BIT">Hi from 8Bit</textarea></div>
+            <!-- dont remove the above script tag from here-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.0/ace.js"
+                integrity="sha512-+jESSLfWnLFLB0xrEnlj3yESiiuuuOnVDcq+HXImWWCB5CBqAnVsmtIZ5GtrNMH0C6gPZoj6n14zJ0iwGYoswQ=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script>
+                var editor = ace.edit("editor");
+                editor.setOptions({
+
+                });
+
+                editor.session.setMode("ace/mode/c_cpp");
+
+                editor.setFontSize("15px");
+
+
+
+            </script>
+            <div class="flex-row-2">
+               <div class="rectangle-4" onclick="runCode()" title="Run Code /F5"><button id="demo"><i class="fas fa-play"></i></button>
+      </div>
+
+
+                <div class="rectangle-5" onclick="uploadFile()" title="Upload file from Folder"><i   class="fa-solid fa-folder" style="color: white;"
+                        title="Upload file from Folder" ></i></div>
+                <div class="rectangle-5" onclick="theme()"><img alt="theme-icon" id="theme-icon" title="Switch to dark mode" src="moon.png" style="height: 30px; width: 30px;"></i></div>
+          
+                <textarea class="textbox rectangle-6" id="myTextarea" onfocus="clearTextarea(this)"
+                    onblur="restoreTextarea(this)"
+                    placeholder="Got any inputs ? Type here.Give multiple Input Line by Line"></textarea>
+                <button class="cybr-btn" onclick="reportError()">
+          Report<span aria-hidden> Error <i class="fas fa-warning"></i></span>
+          <span aria-hidden class="cybr-btn__glitch"><i class="fas fa-warning"></i>error<i class="fas fa-warning"></i></span>
+          <span aria-hidden class="cybr-btn__tag" style="color: lime;"></span>
+        </button>
+                <!--<div class="rectangle-mi" onclick="reportError()" title="Report any error">
+          <i class='fa fa-warning'></i>
+        </div>
+                <div class="rectangle-t" onclick="toggleFullscreen()" title="Fullscreen Toggle">
+          <i class="fa fa-desktop" aria-hidden="true"></i>
+        </div>
+        <div class="rectangle-t" onclick="openTwitterFeed()" title="Tweet about 8BIT">
+          <i class="fab fa-twitter"></i>
+        </div><div class="rectangle-f" onclick="openInstagramProfile()" title="Visit On Instagram">
+          <i class="fab fa-instagram"></i>
+        </div>
+                 <div class="rectangle-m" onclick="openrating()" title="Rate Us !">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </div>-->
+            </div><a href="https://webwisemedia.in/" style="align-self: center;text-decoration: none;">
+                <p
+                    style="color: rgba(255, 255, 255, 0.24); align-self: center;margin-top: 30px;font-family:Comic Sans MS;">
+                    WEBWISE MEDIA</p>
+            </a>
+            <script src="script2.js"></script>
+            <script src="script3.js"></script>
+            <script src="script4.js"></script>
+            <script src="script.js"></script>
+            <script src="script5.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+            <script src="firebase.js"></script>
+            <script src="c++.js"></script>
+             <script src="session.js">
+            
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.js"></script>
+            <div class="notification saved">Code saved</div><div class="notification copied">Code copied</div><div class="notification uploaded">File uploaded to editor</div><div class="notification cleared">Editor cleared</div>
+    
+        
+</body>
+
+</html>
