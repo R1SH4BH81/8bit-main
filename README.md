@@ -19,6 +19,51 @@ Welcome to 8Bit Online Compiler, a simple and user-friendly web-based compiler t
 
 - **No Installation Needed**: No need to install any software or set up development environments; start coding right away!
 
+### Structure
+```
+├── css
+│   ├── bootstrap.min.css
+│   └── styles.css
+├── img
+│   ├── c1.png
+│   ├── c2.png
+│   ├── cpp.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── intro.mp4
+│   ├── logo.png
+│   ├── moon.png
+│   ├── py.png
+│   └── sun1.gif
+├── script
+│   ├── animate.js
+│   ├── bootstrap.min.js
+│   ├── bs-init.js
+│   ├── c++.js
+│   ├── c.js
+│   ├── fire.js
+│   ├── firebase.js
+│   ├── java.js
+│   ├── python.js
+│   ├── script.js
+│   ├── script2.js
+│   ├── script3.js
+│   ├── script4.js
+│   ├── script5.js
+│   └── session.js
+├── 404.html
+├── readme.md
+├── c.html
+├── cpp.html
+├── index.html
+├── java.html
+├── login.html
+├── restricted.html
+├── signup.html
+└── star.html
+
+```
+
 ## How to Use
 
 1. Choose a programming language from the dropdown menu.
