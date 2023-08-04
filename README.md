@@ -21,6 +21,7 @@ Welcome to 8Bit Online Compiler, a simple and user-friendly web-based compiler t
 
 ### Structure
 ```
+.
 ├── css
 │   ├── bootstrap.min.css
 │   └── styles.css
