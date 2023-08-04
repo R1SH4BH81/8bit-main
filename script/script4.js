@@ -16,11 +16,11 @@ function theme() {
 
   if (body.classList.contains('dark-mode')) {
     // Switched to dark mode
-    themeIcon.src = 'css/sun1.gif';
+    themeIcon.src = 'img/sun1.gif';
     themeIcon.title = 'Switch to light mode';
   } else {
     // Switched to light mode
-    themeIcon.src = 'css/moon.png';
+    themeIcon.src = 'img/moon.png';
     themeIcon.title = 'Switch to dark mode';
   }
 }
