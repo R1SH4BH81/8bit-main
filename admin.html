@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Share Tech Mono', monospace;
+            background-image: url("https://static.vecteezy.com/system/resources/previews/008/749/872/non_2x/gradient-liquid-abstract-background-design-dark-blue-background-with-wavy-fluid-shapes-futuristic-design-vector.jpg");
+  
+            background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: none;           
+ /* Replace the above color codes with your desired shades of pink, blue, and violet */
+
+        }
+
+        /* Container for the three content areas */
+        .content-container {
+            display: flex;
+        }
+
+        /* Style for each content area */
+        .content-area {
+            flex: 1;
+            padding: 20px;
+            
+            border-radius: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+
+            background-color: rgba(255, 255, 255, 0.353);
+            box-shadow: 0 0 10px 5px rgba(0, 255, 170, 0.8); /* Add a black border */
+        }
+
+        /* Custom widths for the content areas */
+        .content-area-1 {
+            flex: 6;
+            height: 500px;
+            margin-top: 150px;
+        }
+
+       
+
+        .content-area-3 {
+            flex: 2;
+            height: 350px;
+            margin-top: 150px;
+            
+            margin-right: 9px;
+            background-color: rgba(255, 255, 255, 0.629);
+        }
+
+        /* Add some space between the content areas */
+        .content-area + .content-area {
+            margin-left: 1px;
+        }
+        .container {
+  display: flex; /* Use flexbox for horizontal alignment */
+  justify-content: center; /* Center the children horizontally */
+}
+
+.user, .content {
+  /* Add a gray border to the .user and .content divs */
+  padding: 5px; 
+  margin-top: 20px;
+  border-radius: 20px;
+  height: 450px;/* Add some padding inside the .user and .content divs */
+}
+.user {
+  flex: 0 0 200px; 
+  margin-right: 10px;
+}
+.flex-container {
+  display: flex;
+}
+.content {
+  flex: 0 0 500px;
+}
+.grid-container {
+  display: grid; /* Use grid for layout */
+  grid-template-columns: repeat(2, 1fr); /* Create two equal-width columns */
+}
+body.swal2-shown > *:not(.swal2-container) {
+      filter: blur(35px);
+      pointer-events: none;
+    }
+    h2 {
+      user-select: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+
+        <div class="content-area content-area-1">
+            <div class="grid-container">
+               <div class="user"> 
+                <h2>User Data</h2>
+                <p>User 📝 : <span id="numEntries">Loading...</span></p>
+                 <p>User 🟢 :  <span id="onlineCount">Loading...</span></p>
+               
+
+            
+            
+            
+            
+            
+            
+            
+            
+               </div>
+               <div class="content">
+                <h2>Content</h2>
+            
+            
+            
+            
+            
+            
+            
+                </div>
+            </div>
+        </div>
+
+      
+        <div class="content-area content-area-3">
+            <h2>Error Monitor</h2>
+            
+            <canvas id="donutChart" width="300" height="300" style="margin-left: 50px;"></canvas>
+            
+        
+        
+        
+        
+        
+        </div>
+    </div>
+    <script>
+        // Data and Data Names in Variable Arrays
+        const data = [30, 10, 25, 10, 25];
+        const dataNames = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
+
+        // Generate color palette (you can add more colors if needed)
+        const colors = ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#4bc0c0'];
+
+        // Calculate the total sum of data
+        const total = data.reduce((acc, val) => acc + val, 0);
+
+        // Calculate percentage for each data point
+        const percentages = data.map((value) => ((value / total) * 100).toFixed(2));
+
+        // Get the canvas element
+        const canvas = document.getElementById('donutChart');
+
+        // Create the chart
+        const donutChart = new Chart(canvas, {
+            type: 'doughnut',
+            data: {
+                labels: dataNames,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors,
+                }]
+            },
+            options: {
+                cutout: '70%', // Adjust the size of the inner circle (to create the donut effect)
+                responsive: false, // Adjust as needed
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                const dataIndex = context.dataIndex;
+                                const percentage = percentages[dataIndex];
+                                return `${dataNames[dataIndex]}: ${percentage}%`;
+                            },
+                        },
+                    },
+                },
+            }
+        });
+    </script>
+ <script>
+    // Generate a secret key (replace this with your desired key)
+    const secretKey = '1234';
+
+    // Function to show the password prompt
+    function showPasswordPrompt() {
+      Swal.fire({
+        title: 'Enter Password',
+        input: 'password',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: false,
+        allowOutsideClick: false, 
+        confirmButtonText: 'Submit',
+        preConfirm: (password) => {
+          if (password === secretKey) {
+            Swal.fire('Welcome!', 'some authentications to do', 'success');
+          } else {
+            // If the password is incorrect, show the password prompt again
+            
+            Swal.showValidationMessage('Wrong Password!');
+            alert("Dont you dare to type that wrong again\nPlease Try Again");
+            showPasswordPrompt();
+          }
+        }
+      });
+    }
+
+    // When the window is loaded, show the initial password prompt
+    window.onload = function() {
+      showPasswordPrompt();
+    };
+  </script>
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD29HcmBr1uCZCswiIUoJuo9XVJ3lVRxFs",
+    authDomain: "login-dedaa.firebaseapp.com",
+    databaseURL: "YOUR_DATABASE_URL",
+    projectId: "login-dedaa",
+    storageBucket: "login-dedaa.appspot.com",
+    messagingSenderId: "804295345267",
+    appId: "1:804295345267:web:d6b9a884763ddaa54dd606",
+    measurementId: "G-7J4798GMRC"
+  };
+
+   firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the database
+    var database = firebase.getDatabase();
+
+    // Reference to the "entries" node
+    var entriesRef = firebase.ref(database, "entries");
+
+    // Retrieve the data once
+    get(child(entriesRef, "value"))
+      .then((snapshot) => {
+        var numEntries = get(childCount(snapshot));
+        document.getElementById("numEntries").innerText = numEntries;
+      })
+      .catch((error) => {
+        console.log("Error fetching entries:", error);
+      });
+
+</script>
+<script>
+  // Function to update the online count and display it on the page
+  function updateOnlineCount(count) {
+    const onlineCountElement = document.getElementById("onlineCount");
+    onlineCountElement.textContent = count;
+  }
+
+  function getOnlineCount() {
+    // Get the current count from localStorage
+    let count = localStorage.getItem("onlineCount");
+
+    // If there is no count in localStorage, set it to 0
+    if (count === null) {
+      count = 0;
+    } else {
+      // If count exists, parse it to an integer
+      count = parseInt(count);
+    }
+
+    // Update the displayed count on the page
+    updateOnlineCount(count);
+  }
+
+  // Call the function to get and display the online count when the admin page is opened
+  getOnlineCount();
+</script>
+</body>
+</html>
