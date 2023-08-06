@@ -26,16 +26,6 @@ Welcome to 8Bit Online Compiler, a simple and user-friendly web-based compiler t
 │   ├── bootstrap.min.css
 │   └── styles.css
 ├── img
-│   ├── c1.png
-│   ├── c2.png
-│   ├── cpp.png
-│   ├── favicon-32x32.png
-│   ├── favicon.ico
-│   ├── intro.mp4
-│   ├── logo.png
-│   ├── moon.png
-│   ├── py.png
-│   └── sun1.gif
 ├── script
 │   ├── animate.js
 │   ├── bootstrap.min.js
